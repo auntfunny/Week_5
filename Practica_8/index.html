@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>week-3</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body class="flex flex-col justify-evenly items-center w-full min-h-screen">
+    <main
+      id="pageBody"
+      class="flex flex-col justify-evenly items-center w-full min-h-screen"
+    >
+      <section class="m-5" id="contenadorTarjetas"></section>
+      <table class="m-5">
+        <thead>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Otros</th>
+        </thead>
+        <tbody id="productTable"></tbody>
+      </table>
+      <ul id="listaDeTareas" class="m-5"></ul>
+      <form
+        id="addStudent"
+        class="flex flex-col m-3 border p-2 gap-1 w-lg rounded-md"
+      >
+        <label for="nombreNuevo">Nuevo Estudiante</label>
+        <input
+          type="text"
+          id="nombreNuevo"
+          name="nombreNuevo"
+          class="border border-gray-400 rounded-sm p-1"
+        />
+        <label for="edadNuevo">Edad de Estudiante</label>
+        <input
+          type="text"
+          id="edadNuevo"
+          name="edadNuevo"
+          class="border border-gray-400 rounded-sm p-1"
+        />
+        <label for="notaNuevo">Nota del Estudiante</label>
+        <input
+          type="text"
+          id="notaNuevo"
+          name="notaNuevo"
+          class="border border-gray-400 rounded-sm p-1"
+        />
+        <button
+          type="button"
+          id="estudianteNuevo"
+          class="w-50 bg-gray-200 border self-center m-2 hover:cursor-pointer active:scale-105"
+        >
+          Agregar Estudiante
+        </button>
+      </form>
+    </main>
+    <footer class="flex justify-between p-5 w-full">
+      <p>Created by: Anthony Black</p>
+      <section
+        id="configSection"
+        class="flex flex-col gap-1 justify-center items-center"
+      ></section>
+      <div class="flex flex-col">
+        <label for="newVersion">New Version</label>
+        <input
+          type="number"
+          inputmode="numeric"
+          step=".0001"
+          id="newVersion"
+          name="newVersion"
+          class="border border-gray-400 rounded-sm p-1"
+        />
+        <button
+          type="button"
+          id="appNuevo"
+          class="w-50 bg-gray-200 border self-center m-2 hover:cursor-pointer active:scale-105"
+        >
+          Submit
+        </button>
+      </div>
+    </footer>
+  </body>
+</html>
