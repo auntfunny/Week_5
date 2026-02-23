@@ -299,33 +299,33 @@ const edadNuevo = document.querySelector("#edadNuevo");
 const notaNuevo = document.querySelector("#notaNuevo");
 const estudianteNuevo = document.querySelector("#estudianteNuevo");
 
-const studentArray = [
-  {
+
+const estudiante1 = {
     nombre: "Juan Perez",
     edad: "19",
     notas: "7",
-  },
-  {
+  }
+const estudiante2 =   {
     nombre: "Esteban Fuentes",
     edad: "20",
     notas: "9",
-  },
-  {
+  }
+const estudiante3 =   {
     nombre: "Sara Gomez",
     edad: "20",
     notas: "8",
-  },
-  {
+  }
+const estudiante4 =   {
     nombre: "Miguel Santos",
     edad: "19",
     notas: "10",
-  },
-  {
+  }
+const estudiante5 =   {
     nombre: "Jorge Mendoza",
     edad: "21",
     notas: "6",
-  },
-];
+  }
+
 
 const studentTable = document.createElement("table");
 studentTable.id = "studentTable";
@@ -358,9 +358,9 @@ const studentTableBody = document.querySelector("#studentTableBody");
 studentTable.appendChild(tableFooter);
 const gradeAverage = document.querySelector("#gradeAverage");
 
-mostrarEstudiantes(studentArray);
+mostrarEstudiantes(estudiante1, estudiante2, estudiante3, estudiante4, estudiante5);
 
-function mostrarEstudiantes(estudiantes) {
+function mostrarEstudiantes(...estudiantes) {
   estudiantes.forEach((estudiante) => addStudent(estudiante));
   findAverage(estudiantes);
 }
@@ -386,12 +386,12 @@ function findAverage(estudiantes) {
 }
 
 estudianteNuevo.addEventListener("click", createStudent);
-
+const newArray = [estudiante1, estudiante2, estudiante3, estudiante4, estudiante5];
 function createStudent() {
   if (!nombreNuevo.value || !edadNuevo.value || !notaNuevo.value) {
     alert("No se pudo ingresar");
   } else {
-    const newArray = [...studentArray];
+    
     const estudiante = {
       nombre: nombreNuevo.value,
       edad: edadNuevo.value,
@@ -399,7 +399,7 @@ function createStudent() {
     };
     newArray.push(estudiante);
     addStudent(estudiante);
-
+    console.log(newArray);
     nombreNuevo.value = "";
     edadNuevo.value = "";
     notaNuevo.value = "";
