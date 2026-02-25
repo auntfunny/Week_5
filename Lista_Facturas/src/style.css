@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+@theme{
+
+    --color-pagada:#00ce00;
+    --color-pendiente:#ff0000;
+}

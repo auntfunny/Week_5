@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Facturas</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body
+    class="flex justify-center w-full min-h-screen bg-[#f4f4f4] font-[Ariel]"
+  >
+    <main
+      id="container"
+      class="flex flex-col items-center relative m-8 p-6 rounded-lg shadow-lg w-4xl bg-white"
+    >
+      <h1 class="text-4xl p-3 font-bold self-start">Lista de Facturas</h1>
+      <nav id="filterButtons" class="w-lg p-4">
+        <ul class="w-lg flex justify-between">
+          <li
+            id="todos"
+            data-action="todos"
+            class="w-20 p-1 bg-blue-600 text-white text-center rounded-md hover:cursor-pointer hover:shadow-lg hover:bg-blue-700 active:bg-blue-900"
+          >
+            Todos
+          </li>
+          <li
+            id="pendientes"
+            data-action="pendientes"
+            class="w-20 p-1 bg-red-600 text-white text-center rounded-md hover:cursor-pointer hover:shadow-lg hover:bg-red-700 active:bg-red-900"
+          >
+            Pendientes
+          </li>
+          <li
+            id="pagada"
+            data-action="pagadas"
+            class="w-20 p-1 bg-green-600 text-white text-center rounded-md hover:cursor-pointer hover:shadow-lg hover:bg-green-700 active:bg-green-900"
+          >
+            Pagadas
+          </li>
+        </ul>
+      </nav>
+
+      <table
+        id="tablaFacturas"
+        class="border-collapse border border-[#ddd] w-220"
+      >
+        <thead class="border border-[#ddd] bg-[#f0f0f0]">
+          <tr>
+            <th class="border border-[#ddd] p-2 text-lg text-left font-bold">
+              ID
+            </th>
+            <th class="border border-[#ddd] p-2 text-lg text-left font-bold">
+              Código Factura
+            </th>
+            <th class="border border-[#ddd] p-2 text-lg text-left font-bold">
+              Descripción
+            </th>
+            <th class="border border-[#ddd] p-2 text-lg text-left font-bold">
+              Estado
+            </th>
+            <th class="border border-[#ddd] p-2 text-lg text-left font-bold">
+              Fecha
+            </th>
+            <th class="border border-[#ddd] p-2 text-lg text-left font-bold">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody id="facturaTBody">
+          
+        </tbody>
+      </table>
+      <button
+        type="button"
+        id="addContactBtn"
+        class="absolute top-8 right-10 text-3xl w-10 h-10 rounded-full bg-blue-600 text-white font-black hover:bg-blue-700 hover:shadow-lg hover:cursor-pointer active:bg-blue-900"
+      >
+        +
+      </button>
+    </main>
+
+    <div id="modal" class="hidden fixed w-full h-full bg-[#00000090]">
+      <div
+        id="modalContent"
+        class="absolute flex flex-col gap-3 justify-evenly items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg w-lg h-xl bg-white"
+      >
+        <span
+          id="closeModal"
+          class="absolute top-2 right-5 text-red-600 font-black text-2xl hover:cursor-pointer hover:text-red-700 active:scale-110"
+          >&times;</span
+        >
+        <h2 class="text-2xl font-bold p-3">Agregar Factura</h2>
+        <form id="contactForm" class="w-3/4">
+          <label for="factura" class="font-medium text-lg"
+            >Código de Factura:</label
+          ><br />
+          <input
+            type="text"
+            id="factura"
+            name="factura"
+            required
+            class="w-full border border-gray-300 p-1 text-lg rounded-md bg-gray-100 focus:bg-white"
+          /><br /><br />
+          <label for="descripcion" class="font-medium text-lg"
+            >Descripción:</label
+          ><br />
+          <input
+            type="text"
+            id="descripcion"
+            name="descripcion"
+            required
+            class="w-full border border-gray-300 p-1 text-lg rounded-md bg-gray-100 focus:bg-white"
+          /><br /><br />
+          <label for="estado" class="font-medium text-lg pr-2">Pagado:</label>
+          <input
+            type="radio"
+            id="estado"
+            name="estado"
+            class="scale-130"
+          /><br /><br />
+          <label for="fecha" class="font-medium text-lg">Fecha:</label><br />
+          <input
+            type="date"
+            id="fecha"
+            name="fecha"
+            required
+            class="w-full border border-gray-300 p-1 text-lg rounded-md bg-gray-100 focus:bg-white"
+          /><br /><br />
+          <button
+            type="submit"
+            class="w-full py-1 mb-3 rounded-md bg-blue-600 text-center text-lg text-white hover:bg-blue-700 hover:cursor-pointer active:bg-blue-900"
+          >
+            Agregar
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
