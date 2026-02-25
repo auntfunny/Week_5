@@ -156,18 +156,26 @@ function renderList(listOfItems) {
 
 function renderItem({ id, numeroFactura, descripcion, estado, fecha }) {
   const newRow = document.createElement("tr");
+  const newData = [];
+  const myClasses = "border border-[#ddd] p-2 text-lg text-left".split(" ");
+
+  for(let i = 0; i < 6; i++){
+    newData[i] = document.createElement("td");
+    newData[i].classList.add(...myClasses);
+  }
   renderCount++;
   if (renderCount % 2 === 0) {
     newRow.classList.add("bg-[#fefefe]");
   }
+  newData[0].textContent = id;
+  newData[1].textContent = numeroFactura;
+  newData[2].textContent = descripcion;
+  newData[3].textContent = estado;
+  newData[4].textContent = fecha;
+
   if (estado === "pagada") {
-    newRow.innerHTML = `
-            <td class="border border-[#ddd] p-2 text-lg text-left">${id}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left">${numeroFactura}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left">${descripcion}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left text-pagada">${estado}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left">${fecha}</td>
-            <td class="border border-[#ddd] p-2 text-center">
+    newData[3].classList.add("text-pagada");
+    newData[5].innerHTML = `
               <button
                 data-action="delete"
                 class=" bg-[#f0f0f0] border border-gray-300 py-1 px-2 rounded-sm hover:bg-gray-200 hover:cursor-pointer active:bg-gray-300"
@@ -182,13 +190,8 @@ function renderItem({ id, numeroFactura, descripcion, estado, fecha }) {
             </td>
     `;
   } else {
-    newRow.innerHTML = `
-            <td class="border border-[#ddd] p-2 text-lg text-left">${id}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left">${numeroFactura}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left">${descripcion}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left text-pendiente">${estado}</td>
-            <td class="border border-[#ddd] p-2 text-lg text-left">${fecha}</td>
-            <td class="border border-[#ddd] p-2 text-center">
+    newData[3].classList.add("text-pendiente");
+    newData[5].innerHTML = `
               <button
                 data-action="delete"
                 class="hidden bg-[#f0f0f0] border border-gray-300 py-1 px-2 rounded-sm hover:bg-gray-200 hover:cursor-pointer active:bg-gray-300"
@@ -196,12 +199,15 @@ function renderItem({ id, numeroFactura, descripcion, estado, fecha }) {
                 Del</button
               ><button
                 data-action="pay"
-                class="bg-[#f0f0f0] border border-gray-300 py-1 px-2 rounded-sm hover:bg-gray-200 hover:cursor-pointer active:bg-gray-300"
+                class=" bg-[#f0f0f0] border border-gray-300 py-1 px-2 rounded-sm hover:bg-gray-200 hover:cursor-pointer active:bg-gray-300"
               >
                 Pay
               </button>
             </td>
     `;
+  }
+  for(let i = 0; i < 6; i++){
+    newRow.appendChild(newData[i]);
   }
   facturaTBody.appendChild(newRow);
 }
